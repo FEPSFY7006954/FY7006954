@@ -156,7 +156,24 @@ p.ex1 {
   </body> 
   </html>
   
-  
+  <div id="last-updated">Loading last update time...</div>
+
+  <!-- Verify Button -->
+  <button onclick="verifyLastUpdatedTime()" style="display: block; margin: 10px auto; padding: 8px 16px:">
+      Verify Last Modified Time
+  </button>
+
+  <script>
+    async function getLastUpdatedTime() {
+      const username = 'FEPSFY7006954';
+      const repo = 'FY7006954';
+
+      const url = 'https://api.github.com/repos/${username}/${repo}/commits';
+
+      try {
+          const response = await fetch(url, {
+  </script>
+    
 
 </body>
   
