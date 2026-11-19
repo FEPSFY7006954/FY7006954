@@ -188,9 +188,24 @@ p.ex1 {
               // Displaying the time load 
               document.getElementById('last-updated').innerText = 'Last Modified Time: ${lastCommitDate.toLocaleString()}';
           } else {
-            
-  </script>
-    
+              document.getElementById('last-updated').innerText = 'No commits found in the repository.';
+          }
+      } catch (error) {
+          console.error('Error fetching the last updated time:', error);
+          document.getElementById('last-updated').innerText = 'Error fetching update time. Please check the repository details.';
+      }
+  }
+  // Function to verify the last update time by re-fetching it from the API
+    async function verifyLastUpdatedTime() {
+        document.getElementById('last-updated').innerText = 'Verifying...';
+        await getLastUpdatedTime();
+        alert("Last modified time has been successfully verified from GitHub API.");
+  }
+   // Initial load to display the time on page load
+    window.onload = getLastUpdatedTime;
+</script>
+
+  
 
 </body>
   
