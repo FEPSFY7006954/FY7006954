@@ -172,6 +172,23 @@ p.ex1 {
 
       try {
           const response = await fetch(url, {
+              method: 'GET',
+              headers: {
+                  'Accept': 'application/vnd.github.v3+json',
+              }
+          });
+          if (!response.ok) {
+              throw new Error('Error fetching data: ${response.status} - ${response.statusText}');
+          }
+
+          const commits = await response.json();
+          if (commits && commits.lenght > 0) {
+              const lastCommitDate = new Date (commits[0].commit.committer.date);
+
+              // Displaying the time load 
+              document.getElementById('last-updated').innerText = 'Last Modified Time: ${lastCommitDate.toLocaleString()}';
+          } else {
+            
   </script>
     
 
